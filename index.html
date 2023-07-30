@@ -1,0 +1,249 @@
+<!-- 
+    DO NOT CHANGE HTML TEMPLATE. WORK WITH THE GIVEN STRUCTURE.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HanOver Cafe</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header section -->
+    <header>
+      <!-- Navbar -->
+      <nav
+        class="container d-flex justify-content-between align-items-center py-3 text-light"
+      >
+        <!-- Logo -->
+        <div class="logo brand-f fs-2">HanOver</div>
+        <!-- Cart container -->
+        <!-- 
+            Chart task: [TASK]
+
+            -> If the user presses "Add to Cart" button the #cart_counter will increase by 1.
+            -> If the user presses #cart_dec than the chart count will decrease by 1. Make sure the cart count should not get below 0. (!important).
+         -->
+        <div class="bg-light text-dark d-flex align-items-center p-1" id="iits-cart">
+          <!-- Cart Counter -->
+          <span class="ps-1"><i class="fa-solid fa-cart-shopping"></i></span>
+          <span class="fw-bold me-2 px-1" id="iits-cart_counter">0</span>
+          <!-- Cart decrement -->
+          <span class="px-2" id="cart_dec" title="Remove an item from cart"
+            ><i class="fa-solid fa-minus"></i
+          ></span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container d-flex flex-column gap-2 pt-4">
+        <!-- Search box -->
+        <section class="px-2 w-100" id="searchSection">
+          <h1 class="text-center brand-f">Search your fuel</h1>
+          <!-- 
+            Search bar task: [TASK]
+
+            -> If the user submits the form #items will only contain item thats name matches the search value.
+
+           -->
+          <form class="d-flex gap-2 m-auto my-4" id="searchForm">
+            <input
+              type="text"
+              class="form-control"
+              id="iits-searchBox"
+              placeholder="Choose your meal & drink"
+            />
+            <button type="submit" class="btn">Search</button>
+          </form>
+          <p class="fs-6 text-center mb-0 brand-f">
+            Sip, savor, repeat at HanOver Cafe
+          </p>
+        </section>
+        <!-- Add new item section -->
+        <!-- 
+            Add new item section: [TASK]
+
+            -> This section will only be visible after the admin verification.
+            -> By pressing the "X" sign this section will get hidden
+            -> After form submission all input fields should be clear
+         -->
+        <section class="my-3" id="iits-adminSection">
+          <hr>
+          <!-- Header -->
+          <div class="adminSection-header d-flex justify-content-between align-items-center my-2">
+            <h1 class="brand-f">Add new item</h1>
+            <span id="iits-cancelBtn"><i class="fa-solid fa-xmark fs-1 text-danger"></i></span>
+          </div>
+          <!-- Add new item form -->
+          <form class="d-flex flex-column gap-2" id="iits-addNewForm">
+            <!-- Input div -->
+            <div>
+              <label for="name" class="fw-bold fs-4">Name</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <!-- Input div -->
+            <div>
+              <label for="pic" class="fw-bold fs-4">Thumbnail</label>
+              <input type="text" class="form-control" id="pic">
+            </div>
+            <!-- textarea div -->
+            <div>
+              <label for="desc" class="fw-bold fs-4">Description</label>
+              <textarea class="form-control" id="desc" rows="5"></textarea>
+            </div>
+            <!-- select div -->
+            <div>
+              <label for="typeItem" class="fw-bold fs-4">Type</label>
+              <select class="form-control form-select" id="typeItem">
+                <option value="invalid" hidden>Please Select</option>
+                <option value="coffee">Coffee</option>
+                <option value="burger">Burger</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn ">Add New Item</button>
+            </div>
+          </form>
+        </section>
+        <hr />
+        <!-- Filtering section -->
+        <section class="w-100 px-2">
+          <h1 class="text-center brand-f">Our Menu</h1>
+          <div
+            class="row gap-3 flex-column flex-md-row align-items-center align-items-md-start mt-4"
+          >
+            <!-- Filter sidebar -->
+            <!-- 
+                Filter task: [TASK]
+
+                -> #items will contain only such item thats type matches the selected radio button value.
+
+             -->
+            <div class="filter col-md-3">
+              <h4 class="brand-f">Filter By Item Category</h4>
+              <!-- Radio field -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="categoryToggle"
+                  value="all"
+                  id="all_toggle"
+                  checked
+                />
+                <label class="form-check-label" for="all_toggle">All</label>
+              </div>
+              <!-- Radio field -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="categoryToggle"
+                  value="coffee"
+                  id="coffee_toggle"
+                />
+                <label class="form-check-label" for="coffee_toggle"
+                  >Coffee</label
+                >
+              </div>
+              <!-- Radio field -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="categoryToggle"
+                  value="burger"
+                  id="burger_toggle"
+                />
+                <label class="form-check-label" for="burger_toggle"
+                  >Burger</label
+                >
+              </div>
+            </div>
+            <!-- All items container -->
+            <!-- 
+                Items container task: [TASK]
+
+                -> At the the #items will contain all the items.
+                -> Items should be added dynamically from JS using the API
+                -> If the user selects any type #items will only show the selected type item.
+                -> If the user searched for any item #items should only show the item thats name matches the search value.
+                -> If no items found show "Nothing Found" message
+
+             -->
+            <div class="col-9 row" id="iits-items">
+
+              <!-- 
+                    Handle this code block in JS and dynamically add values and render the item
+                 -->
+              <div class="item col-md-6 col-lg-4 p-3" data-category="coffee">
+                <div class="card">
+                  <div class="img-container">
+                    <img src="https://th.bing.com/th/id/OIP.GyxUgOOyXbk3dsnM79il0AHaEK?pid=ImgDet&rs=1" alt="Coffee" />
+                    <span class="category-pill">Category</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p>
+
+                  
+                        <!-- Add to Cart Btn task: [TASK]
+
+                        -> When the "Add to cart" button is pressed the #cart_counter should increment by 1 -->
+                
+                    <button class="addToCartBtn btn w-100">Add to cart</button>
+                  </div>
+                </div>
+              </div> 
+              
+                <!-- Handle this code block in JS and dynamically add values and render the item
+                -->  
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="text-light py-2">
+      <div class="container">
+        <p class="text-center mb-0">
+          &copy; <span class="brand-f">HanOver.</span> IITS JS Course Summer 23 <span class="text-secondary fw-bold text-decoration-underline" id="iits-adminBtn">Admin</span>
+        </p>
+        <p class="fw-bold text-center mb-0" id="iits-developer">~(ADD YOUR NAME USING JS)~</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
